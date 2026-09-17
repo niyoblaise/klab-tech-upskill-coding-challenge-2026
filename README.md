@@ -7,7 +7,7 @@ A full-stack task management application built with **Spring Boot** and **React 
 | Service         | URL                                                                                    |
 | --------------- | -------------------------------------------------------------------------------------- |
 | **Frontend**    | [Task Manager Frontend](https://klab-tasks-frontend.vercel.app/)                       |
-| **Backend API** | [Backend API](https://klab-backend-xsdf.onrender.com)                                  |
+| **Backend API** | [Backend API](https://klab-backend-xsdf.onrender.com/swagger-ui/index.html)            |
 | **Database**    | Neon Serverless PostgreSQL                                                             |
 
 ---
