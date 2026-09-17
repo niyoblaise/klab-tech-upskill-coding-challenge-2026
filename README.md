@@ -6,8 +6,8 @@ A full-stack task management application built with **Spring Boot** and **React 
 
 | Service         | URL                                                                                    |
 | --------------- | -------------------------------------------------------------------------------------- |
-| **Frontend**    | [Task Manager Frontend](https://klab-tasks-frontend.vercel.app?utm_source=chatgpt.com) |
-| **Backend API** | [Backend API](https://klab-backend-xsdf.onrender.com?utm_source=chatgpt.com)           |
+| **Frontend**    | [Task Manager Frontend](https://klab-tasks-frontend.vercel.app/)                       |
+| **Backend API** | [Backend API](https://klab-backend-xsdf.onrender.com)                                  |
 | **Database**    | Neon Serverless PostgreSQL                                                             |
 
 ---
