@@ -1,117 +1,204 @@
-# kLab Tech Upskill Program
-## Full-Stack Coding Challenge
+# Task Manager Application
 
-Congratulations on being shortlisted for the **kLab Tech Upskill Program**! 🎉
+A full-stack task management application built with **Spring Boot** and **React (Vite)**. The application provides a RESTful API for managing tasks and a responsive web interface for creating, viewing, updating, searching, filtering, and deleting tasks.
 
-As part of the final selection process, you are required to complete this coding challenge. The challenge will assess your ability to build a simple application with a **frontend, backend, API, and database**.
+##  Live Demo
+
+| Service         | URL                                                                                    |
+| --------------- | -------------------------------------------------------------------------------------- |
+| **Frontend**    | [Task Manager Frontend](https://klab-tasks-frontend.vercel.app?utm_source=chatgpt.com) |
+| **Backend API** | [Backend API](https://klab-backend-xsdf.onrender.com?utm_source=chatgpt.com)           |
+| **Database**    | Neon Serverless PostgreSQL                                                             |
 
 ---
 
-## 💻 Challenge: Task Management System
+##  Features
 
-Build a simple web application that allows users to manage tasks.
+* Create new tasks
+* View all tasks
+* Edit existing tasks
+* Delete tasks
+* Mark tasks as completed or pending
+* Search tasks
+* Filter tasks by status
+* Task priority levels: **LOW, MEDIUM, HIGH**
+* Pagination
+* RESTful backend API
+* PostgreSQL database persistence
+* Responsive user interface
+* Dockerized backend
+* Cloud deployment
 
-### Your application should allow users to:
+---
 
-- View all tasks
-- Create a task
-- Edit a task
-- Delete a task
-- Mark a task as **Pending** or **Completed**
-- Filter tasks by status
+##  Tech Stack
 
-Each task should contain at least:
+### Backend
+
+* **Java 17**
+* **Spring Boot**
+* **Spring Data JPA**
+* **Hibernate**
+* **PostgreSQL Driver**
+* **Maven**
+
+### Frontend
+
+* **React**
+* **Vite**
+* **Tailwind CSS**
+* **JavaScript**
+* **Fetch API**
+
+### Infrastructure & Deployment
+
+* **Docker**
+* **Render** — Backend deployment
+* **Vercel** — Frontend deployment
+* **Neon** — Serverless PostgreSQL database
+
+---
+
+##  API Endpoints
+
+The backend exposes the following REST endpoints:
+
+| Method   | Endpoint      | Description         |
+| -------- | ------------- | ------------------- |
+| `GET`    | `/tasks`      | Get paginated tasks |
+| `GET`    | `/tasks/{id}` | Get a task by ID    |
+| `POST`   | `/tasks`      | Create a new task   |
+| `PUT`    | `/tasks/{id}` | Update a task       |
+| `DELETE` | `/tasks/{id}` | Delete a task       |
+
+### Query Parameters
+
+The `GET /tasks` endpoint supports:
 
 ```text
-id
-title
-description
-status
-priority
-createdAt
+?page=0
+&size=5
+&status=PENDING
+&search=meeting
 ```
-## 🔧 Backend Requirements
 
-Create a **REST API** to manage the tasks.
+Example:
 
-At minimum, implement the following endpoints:
-
-| Method | Endpoint | Purpose |
-|---|---|---|
-| `GET` | `/tasks` | Get all tasks |
-| `GET` | `/tasks/:id` | Get one task |
-| `POST` | `/tasks` | Create a task |
-| `PUT` | `/tasks/:id` | Update a task |
-| `DELETE` | `/tasks/:id` | Delete a task |
-
-The task data must be stored in a **database**.
+```text
+GET /tasks?page=0&size=5&status=PENDING&search=meeting
+```
 
 ---
 
-## 🛠️ Technology
+##  Database
 
-You are free to use technologies you are comfortable with.
+The application uses **PostgreSQL** for persistent task storage.
 
-### Examples
+Each task contains information such as:
 
-**Frontend:**
-- React
-- Next.js
-- Vue
-- Angular
+```text
+Task
+├── id
+├── title
+├── description
+├── status
+├── priority
+└── createdAt
+```
 
-**Backend:**
-- Node.js / Express
-- Django
-- Laravel
-- Spring Boot
+Task statuses:
 
-**Database:**
-- PostgreSQL
-- MySQL
-- MongoDB
-- SQLite
+* `PENDING`
+* `COMPLETED`
 
-> **Note:** We are interested in your ability to build and explain the solution, not in a specific technology.
+Task priorities:
 
----
+* `LOW`
+* `MEDIUM`
+* `HIGH`
 
-## ⭐ Optional Features
-
-If you have time, you may add:
-
-- User authentication
-- Search
-- Pagination
-- Form validation
-- Tests
-- API documentation
-- Deployment
-- Improved UI/UX
-
-> These features are **not required**. Focus on completing the core requirements first.
+The production database is hosted using **Neon Serverless PostgreSQL**.
 
 ---
 
-## 📤 How to Submit
+##  Local Setup
 
-1. **Fork this repository** to your GitHub account or create a new repository.
-2. Build your solution in the repository (yours or forked).
-3. Add a `README.md` explaining:
-   - Technologies used
-   - How to install and run the project
-   - How to set up the database
-   - Any important technical decisions or additional features
-4. If possible, **deploy your application** and include the live demo link in your README.
-5. Submit your project using the this [Link](https://forms.gle/BtwBgyGT1hXVdb1TA)
+### Prerequisites
 
-### The submission form will ask for:
+Make sure the following are installed:
 
-- Full name
-- Email address
-- GitHub repository link
-- Live demo link (if available)
-- Technologies used
-- Other basic information about your submission
+* Java 17+
+* Maven 3.8+ or use the included Maven Wrapper
+* Node.js 18+
+* npm
+* PostgreSQL database
 
-> **Submission deadline:** Friday, 18 September 2026 at **8:30 AM (Rwanda Time)**.
+---
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/niyoblaise/klab-tech-upskill-coding-challenge-2026
+```
+
+### 2. Start the Backend
+
+Navigate to the backend directory:
+
+```bash
+cd backend
+```
+
+Run the application using the Maven Wrapper:
+
+#### Linux / macOS
+
+```bash
+./mvnw clean spring-boot:run
+```
+
+#### Windows
+
+```bash
+mvnw.cmd clean spring-boot:run
+```
+
+The backend will be on :
+
+```text
+http://localhost:8080
+```
+
+---
+
+### 3. Configure Database
+
+Configure the PostgreSQL connection in `application.properties` or through environment variables.
+
+Required environment variables:
+
+```text
+DB_URL=jdbc:postgresql://<host>:<port>/<database>
+DB_USER=<username>
+DB_PASS=<password>
+```
+
+---
+
+### 4. Start the Frontend
+
+Open another terminal and navigate to the frontend:
+
+```bash
+cd frontend
+```
+
+Install dependencies:
+```bash
+npm install
+```
+Then run frontend with
+
+```bash
+npm run dev
+```
