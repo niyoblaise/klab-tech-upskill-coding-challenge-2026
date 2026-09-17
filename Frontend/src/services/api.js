@@ -1,5 +1,5 @@
-const API_BASE_URL = "/tasks";
-
+const BACKEND_URL = import.meta.env.VITE_API_BASE_URL || "https://klab-backend-xsdf.onrender.com";
+const API_BASE_URL = `${BACKEND_URL}/tasks`;
 export async function fetchTasks({ page = 0, size = 5, status = "", search = "" } = {}) {
   const queryParams = new URLSearchParams({
     page: page.toString(),
