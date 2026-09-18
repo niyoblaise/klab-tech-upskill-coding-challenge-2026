@@ -14,7 +14,7 @@ export default function App() {
   const [page, setPage] = useState(0);
   const [totalPages, setTotalPages] = useState(1);
   const [totalElements, setTotalElements] = useState(0);
-  const pageSize = 5;
+  const pageSize = 10;
 
   const loadTasks = useCallback(async () => {
     setIsLoading(true);
@@ -53,6 +53,7 @@ export default function App() {
     setIsLoading(true);
     try {
       await createTask(taskData);
+      setPage(0);
       loadTasks();
     } catch (err) {
       console.error(err);
@@ -154,7 +155,7 @@ export default function App() {
           )}
         </div>
 
-        {totalPages > 1 && (
+        {totalElements > 0 && (
           <div className="mt-6 flex items-center justify-between border-t border-slate-200 pt-4 text-xs font-semibold text-slate-600">
             <span>
               Showing {tasks.length} of {totalElements} tasks

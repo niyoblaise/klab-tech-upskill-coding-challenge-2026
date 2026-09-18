@@ -2,7 +2,7 @@ const BACKEND_URL = import.meta.env.VITE_API_BASE_URL || "https://klab-backend-x
 const API_BASE_URL = `${BACKEND_URL}/tasks`;
 
 
-export async function fetchTasks({ page = 0, size = 5, status = "", search = "" } = {}) {
+export async function fetchTasks({ page = 0, size = 10, status = "", search = "" } = {}) {
   const queryParams = new URLSearchParams({
     page: page.toString(),
     size: size.toString(),
@@ -31,11 +31,18 @@ export async function fetchTasks({ page = 0, size = 5, status = "", search = "" 
     return { content: sorted, totalPages: 1, totalElements: sorted.length, page: 0 };
   }
 
+
+  const pageMeta = data.page || {};
+
+  const totalPages = pageMeta.totalPages ?? data.totalPages ?? 1;
+  const totalElements = pageMeta.totalElements ?? data.totalElements ?? (data.content ? data.content.length : 0);
+  const pageNumber = pageMeta.number ?? data.number ?? 0;
+
   return {
     content: data.content || [],
-    totalPages: data.totalPages ?? 1,
-    totalElements: data.totalElements ?? (data.content ? data.content.length : 0),
-    page: data.number ?? 0,
+    totalPages,
+    totalElements,
+    page: pageNumber,
   };
 }
 
